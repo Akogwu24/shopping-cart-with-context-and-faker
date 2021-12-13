@@ -5,3 +5,23 @@
   --special: #553d67;
   --unique: #99738e;
 }
+.mobile-nav {
+  position: -webkit-sticky; /* Safari */
+  animation: moveDown 0.5s ease-in-out;
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(-5rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}
+
+.sidebar {
+  left: -100%;
+}
+.sidebar.active {
+  left: 0;
+}

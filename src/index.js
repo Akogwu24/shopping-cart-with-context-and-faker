@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { BrowserRouter } from 'react-router-dom';
 import Context from './components/context/context';
 
 const theme = extendTheme({

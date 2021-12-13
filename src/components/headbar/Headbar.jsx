@@ -4,19 +4,23 @@ import { RiMenuUnfoldFill } from 'react-icons/ri';
 import { BsFillCaretUpFill, BsFillCaretDownFill } from 'react-icons/bs';
 import CartItems from './cartItems';
 
-const Headbar = () => {
+const Headbar = ({ toggle, handleToggle }) => {
   const [cartOpen, setCartOpen] = useState(false);
   return (
     <Flex
-      pos='relative'
+      className='mobile-nav'
+      pos='sticky'
+      top={0}
+      zIndex={10}
       justify='space-between'
       align='center'
       bg='#fff'
-      p={3}
+      p={4}
+      w='100%'
       color='gray.700'
     >
       <HStack spacing={5}>
-        <RiMenuUnfoldFill size={20} />
+        <RiMenuUnfoldFill size={20} onClick={handleToggle} />
         <Text fontWeight='700'>Home</Text>
       </HStack>
       <Square
@@ -25,7 +29,7 @@ const Headbar = () => {
         bg='unique'
         py='5px'
         px='10px'
-        mr={[5]}
+        mr={[8]}
         color='#fff'
         cursor='pointer'
       >

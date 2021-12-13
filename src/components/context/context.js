@@ -1,24 +1,29 @@
-import { createContext, useReducer, useContext } from 'react';
+import { createContext, useReducer, useContext, useState } from 'react';
 import faker from 'faker';
 import { cartReducer } from './reducers';
 
 const Cart = createContext();
-faker.seed(99);
+faker.seed(100);
 
 const Context = ({ children }) => {
+  const [toggle, setToggle] = useState(false);
   const products = [...Array(20)].map(() => ({
     id: faker.datatype.uuid(),
     name: faker.commerce.productName(),
     price: faker.commerce.price(),
     description: faker.commerce.productDescription(),
     product: faker.commerce.product(),
-    deliveryTimeLine: faker.date.between(),
     image: faker.random.image(),
     inStock: faker.random.arrayElement([0, 1]),
     ratings: faker.random.arrayElement([1, 2, 3, 4, 5]),
   }));
 
-  const [state, dispatch] = useReducer(cartReducer, { products, cart: [] });
+  const [state, dispatch] = useReducer(cartReducer, {
+    products,
+    cart: [],
+    // toggle,
+    // setToggle,
+  });
 
   return <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>;
 };

@@ -3,6 +3,7 @@ import {
   Button,
   Checkbox,
   Heading,
+  HStack,
   Radio,
   RadioGroup,
   Stack,
@@ -13,25 +14,32 @@ import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import Rating from '../rating/Rating';
 import { BsSearch } from 'react-icons/bs';
+import { RiMenuUnfoldFill } from 'react-icons/ri';
 
-const Sidebar = () => {
+const Sidebar = ({ toggle, setToggle }) => {
   const [radioValue, setRadioValue] = useState('1');
   const [isMobile] = useMediaQuery('max-width: 640px');
+  const [rating, setRating] = useState(1);
 
   return (
     <Stack
+      className={toggle ? 'sidebar active' : 'sidebar'}
       display='flex'
+      flexDirection='column'
       h='100vh'
       w='250px'
       bg='primary'
       spacing='20px'
       py='20px'
-      px='25px'
+      px={['25px', '20px', '25px']}
       color='gray.50'
     >
-      <Heading color='tatiary' mb='10px'>
-        Filters
-      </Heading>
+      <HStack justify='space-between'>
+        <Heading color='tatiary' mb='10px'>
+          Filters
+        </Heading>
+        <RiMenuUnfoldFill size={20} />
+      </HStack>
       <InputGroup>
         <InputLeftElement children={<BsSearch />} />
         <Input placeholder='search Items...' />
@@ -44,10 +52,14 @@ const Sidebar = () => {
       </RadioGroup>
       <Checkbox>Include Out of Stock</Checkbox>
       <Checkbox>Fast Delivery Only</Checkbox>
-      <Rating />
-      <Box>
+      <Rating
+        cursor='pointer'
+        rating={rating}
+        handleStarRating={(index) => setRating(index + 1)}
+      />
+      <Box display='flex' flex={1}>
         <Button
-          mt='150px'
+          mt='auto'
           w='100%'
           _hover={{ bg: '#553d67aa' }}
           _focus={{ boroder: 'none' }}
