@@ -7,8 +7,6 @@ import {
   Radio,
   RadioGroup,
   Stack,
-  useDisclosure,
-  useMediaQuery,
 } from '@chakra-ui/react';
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import React, { useState } from 'react';
@@ -16,11 +14,10 @@ import Rating from '../rating/Rating';
 import { BsSearch } from 'react-icons/bs';
 import { RiMenuUnfoldFill } from 'react-icons/ri';
 
-const Sidebar = ({ toggle, setToggle }) => {
+const Sidebar = ({ toggle, closeSidebar }) => {
   const [radioValue, setRadioValue] = useState('1');
-  const [isMobile] = useMediaQuery('max-width: 640px');
   const [rating, setRating] = useState(1);
-
+  console.log('handleToggle', closeSidebar);
   return (
     <Stack
       className={toggle ? 'sidebar active' : 'sidebar'}
@@ -38,7 +35,7 @@ const Sidebar = ({ toggle, setToggle }) => {
         <Heading color='tatiary' mb='10px'>
           Filters
         </Heading>
-        <RiMenuUnfoldFill size={20} />
+        <RiMenuUnfoldFill size={20} onClick={closeSidebar} />
       </HStack>
       <InputGroup>
         <InputLeftElement children={<BsSearch />} />

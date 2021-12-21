@@ -6,7 +6,6 @@ const Cart = createContext();
 faker.seed(100);
 
 const Context = ({ children }) => {
-  const [toggle, setToggle] = useState(false);
   const products = [...Array(20)].map(() => ({
     id: faker.datatype.uuid(),
     name: faker.commerce.productName(),
@@ -21,8 +20,6 @@ const Context = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, {
     products,
     cart: [],
-    // toggle,
-    // setToggle,
   });
 
   return <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>;

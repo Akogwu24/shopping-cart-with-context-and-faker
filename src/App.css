@@ -5,6 +5,13 @@
   --special: #553d67;
   --unique: #99738e;
 }
+/* 
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+  margin: 0;
+  overflow: hidden;
+} */
 .mobile-nav {
   position: -webkit-sticky; /* Safari */
   animation: moveDown 0.5s ease-in-out;
@@ -19,9 +26,16 @@
   }
 }
 
-.sidebar {
-  left: -100%;
+@media (max-width: 980px) {
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 1000;
+  }
 }
-.sidebar.active {
-  left: 0;
+
+.active {
+  /* transform: translate(50%, 50%); */
+  left: 0%;
 }

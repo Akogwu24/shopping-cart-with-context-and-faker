@@ -4,7 +4,7 @@ import Rating from '../rating/Rating';
 
 const SingleProduct = ({ product }) => {
   return (
-    <Box m={5} p='6px' bg='#fff' borderRadius='5px' w='230px'>
+    <Box m={4} p='6px' bg='#fff' borderRadius='5px' w='230px'>
       <Box bg='gray.50' p={2} borderRadius='5px'>
         <Stack spacing={4}>
           <Image
