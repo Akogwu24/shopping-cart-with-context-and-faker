@@ -5,8 +5,12 @@ import { BsFillCaretUpFill, BsFillCaretDownFill } from 'react-icons/bs';
 import CartItems from './cartItems';
 import { CartState } from '../context/context';
 
-const Headbar = ({ handleToggle }) => {
+const Headbar = ({ handleToggle, closeSidebar }) => {
   const [cartOpen, setCartOpen] = useState(false);
+  const handleCartOpen = () => {
+    closeSidebar();
+    setCartOpen(!cartOpen);
+  };
 
   return (
     <Flex
@@ -26,7 +30,7 @@ const Headbar = ({ handleToggle }) => {
         <Text fontWeight='700'>Home</Text>
       </HStack>
       <Square
-        onClick={() => setCartOpen(!cartOpen)}
+        onClick={handleCartOpen}
         borderRadius='5px'
         bg='unique'
         py='5px'

@@ -3,13 +3,13 @@ import Headbar from '../headbar/Headbar';
 import SingleProduct from './SingleProduct';
 import { CartState } from '../context/context';
 
-const Content = ({ handleToggle }) => {
+const Content = ({ handleToggle, closeSidebar }) => {
   const { state } = CartState();
   console.log('state', state);
 
   return (
     <Stack bg='gray.100' flex={1} pos='relative'>
-      <Headbar handleToggle={handleToggle} />
+      <Headbar handleToggle={handleToggle} closeSidebar={closeSidebar} />
       <Grid
         gridTemplateColumns={[
           'repeat(1, 1fr)',
