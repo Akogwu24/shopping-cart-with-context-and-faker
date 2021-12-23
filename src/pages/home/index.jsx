@@ -5,7 +5,7 @@ import Sidebar from '../../components/sidebar';
 
 const Home = () => {
   const [toggle, setToggle] = useState(false);
-  console.log('toggle', toggle);
+
   const closeSidebar = () => {
     setToggle(false);
   };

@@ -5,7 +5,6 @@ import { CartState } from '../context/context';
 
 const Content = ({ handleToggle, closeSidebar }) => {
   const { state } = CartState();
-  console.log('state', state);
 
   return (
     <Stack bg='gray.100' flex={1} pos='relative'>

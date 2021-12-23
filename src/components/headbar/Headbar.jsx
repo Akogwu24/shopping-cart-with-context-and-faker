@@ -1,12 +1,14 @@
 import { Badge, Box, Flex, HStack, Square, Text } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiMenuUnfoldFill } from 'react-icons/ri';
 import { BsFillCaretUpFill, BsFillCaretDownFill } from 'react-icons/bs';
 import CartItems from './cartItems';
 import { CartState } from '../context/context';
 
 const Headbar = ({ handleToggle, closeSidebar }) => {
+  const { state } = CartState();
   const [cartOpen, setCartOpen] = useState(false);
+
   const handleCartOpen = () => {
     closeSidebar();
     setCartOpen(!cartOpen);
@@ -42,10 +44,10 @@ const Headbar = ({ handleToggle, closeSidebar }) => {
         <Text fontWeight='500' s>
           Cart
         </Text>
-        <Badge mx='5px'>10</Badge>
+        <Badge mx='5px'>{state?.cart.length}</Badge>
         {cartOpen ? <BsFillCaretUpFill /> : <BsFillCaretDownFill />}
       </Square>
-      {cartOpen && <CartItems />}
+      {cartOpen && <CartItems state={state} />}
     </Flex>
   );
 };

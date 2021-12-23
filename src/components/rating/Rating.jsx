@@ -8,12 +8,16 @@ const Rating = ({ rating, handleStarRating, fontSize, cursor, noClick }) => {
       <Text fontSize={fontSize}>Rating</Text>
       {noClick
         ? [...Array(5)].map((_, index) => (
-            <span style={{ cursor }}>
+            <span key={index} style={{ cursor }}>
               {rating > index ? <AiFillStar /> : <AiOutlineStar />}
             </span>
           ))
         : [...Array(5)].map((_, index) => (
-            <span style={{ cursor }} onClick={() => handleStarRating(index)}>
+            <span
+              key={index}
+              style={{ cursor }}
+              onClick={() => handleStarRating(index)}
+            >
               {rating > index ? <AiFillStar /> : <AiOutlineStar />}
             </span>
           ))}

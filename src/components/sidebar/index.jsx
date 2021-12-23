@@ -17,7 +17,7 @@ import { RiMenuUnfoldFill } from 'react-icons/ri';
 const Sidebar = ({ toggle, closeSidebar }) => {
   const [radioValue, setRadioValue] = useState('1');
   const [rating, setRating] = useState(1);
-  console.log('handleToggle', closeSidebar);
+
   return (
     <Stack
       className={toggle ? 'sidebar active' : 'sidebar'}
